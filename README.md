@@ -1,6 +1,37 @@
 # Eureka-widget-model-navbar
 
-This README outlines the details of collaborating on this Ember addon.
+A navigation bar for Eureka's models. Usage:
+
+    {
+        User: {
+            views: {
+                model: {
+                    widgets: [
+                        {
+                            type: 'model-navbar',
+                            items: [ // the items of the navigation bar
+                                {
+                                    route: 'user.model.index' // the full ember route
+                                    label: 'Informations' // the displayed name
+                                },
+                                {
+                                    route: 'user.model.favorites',
+                                    label: 'Favorites',
+                                    icon: 'glyphicon glyphicon-star' // the icon css classes
+                                }
+                            ]
+                        }
+                    ],
+                    index: {
+                        widgets: [...]
+                    },
+                    favorties: {
+                        widgets: [...]
+                    }
+                }
+            }
+        }
+    }
 
 ## Installation
 

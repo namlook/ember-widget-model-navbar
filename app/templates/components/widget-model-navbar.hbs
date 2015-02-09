@@ -1,0 +1,5 @@
+<ul>
+{{#each item in config.items}}
+    <li>{{#link-to item.route model._id}}{{item.label}}{{/link-to}}</li>
+{{/each}}
+</ul>
