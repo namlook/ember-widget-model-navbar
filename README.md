@@ -19,6 +19,12 @@ A navigation bar for Eureka's models. Usage:
                                     label: 'Favorites',
                                     icon: 'glyphicon glyphicon-star' // the icon css classes
                                 }
+                            ],
+                            secondaryItems: [ // items will be placed into a dropdown menu
+                                {
+                                    route: 'user.model.unimportantStuff',
+                                    label: 'stuff'
+                                }
                             ]
                         }
                     ],
@@ -26,6 +32,9 @@ A navigation bar for Eureka's models. Usage:
                         widgets: [...]
                     },
                     favorties: {
+                        widgets: [...]
+                    },
+                    unimportantStuff: {
                         widgets: [...]
                     }
                 }

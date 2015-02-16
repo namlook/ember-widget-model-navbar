@@ -1,5 +1,26 @@
-<ul>
-{{#each item in config.items}}
-    <li>{{#link-to item.route model._id}}{{item.label}}{{/link-to}}</li>
-{{/each}}
+{{#if hasPrimaryItems}}
+<ul class="nav nav-tabs">
+    {{#each item in primaryItems}}
+    <li role="presentation" {{bind-attr class="item.isActive:active"}}>
+        {{#link-to item.route model._id}} {{item.label}} {{/link-to}}
+    </li>
+    {{/each}}
+
+    {{#if hasSecondaryItems}}
+    <li role="presentation" class="dropdown pull-right">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" role="button">
+            <span class="glyphicon glyphicon-cog"></span>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">arf</a></li>
+            {{#each item in secondaryItems}}
+                <li role="presentation">
+                    {{#link-to item.route model._id}} {{item.label}} {{/link-to}}
+                </li>
+            {{/each}}
+        </ul>
+    </li>
+    {{/if}}
 </ul>
+{{/if}}
