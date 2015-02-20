@@ -1,30 +1,17 @@
-import Ember from 'ember';
 import WidgetModel from 'ember-eureka/widget-model';
+import ActionableMixin from 'eureka-mixin-actionable-widget';
 
-export default WidgetModel.extend({
+export default WidgetModel.extend(ActionableMixin, {
 
-    currentRouteName: Ember.computed.alias('application.currentRouteName'),
-
-    hasPrimaryItems: Ember.computed.bool('primaryItems'),
-
-    primaryItems: function() {
-        var results = Ember.A();
-        var currentRouteName = this.get('currentRouteName');
-
-        // set the item as active if the route is actually the current route
-        this.get('config.items').forEach(function(item) {
-            if (Ember.get(item, 'route') === currentRouteName) {
-                Ember.set(item, 'isActive', true);
-            } else {
-                Ember.set(item, 'isActive', false);
-            }
-            results.pushObject(item);
-        });
-
-        return results;
-    }.property('config.items', 'currentRouteName'),
-
-    secondaryItems: Ember.computed.alias('config.secondaryItems'),
-    hasSecondaryItems: Ember.computed.bool('secondaryItems')
+    label: function() {
+        var _label = this.get('config.label');
+        if (_label === undefined) {
+            _label = "auto";
+        }
+        if (_label === 'auto') {
+            _label = this.get('model.title');
+        }
+        return _label;
+    }.property('config.label', 'model.title')
 
 });
