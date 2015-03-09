@@ -9,6 +9,12 @@ A navigation bar for Eureka's models. Usage:
                     widgets: [
                         {
                             type: 'model-navbar',
+
+                            // the route when clicking on the label.
+                            //  - if null or undefined, the route will be <resource>.model.index
+                            //  - if false, the label name won't be clickable
+                            labelRoute: null,
+
                             items: [ // the items of the navigation bar
                                 {
                                     route: 'user.model.index' // the full ember route
